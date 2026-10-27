@@ -1,0 +1,147 @@
+/* ИИ-шпаргалка: тетрадь в клетку, синие чернила, жёлтый маркер, красная ручка */
+:root {
+  --paper: #F6F8FC;
+  --grid: #DCE5F1;
+  --ink: #1C2B4D;
+  --ink-soft: #4A5878;
+  --marker: #FFE55C;
+  --redpen: #D93A3A;
+  --cell: 24px;
+  --display: "Unbounded", system-ui, sans-serif;
+  --body: "Golos Text", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+body {
+  margin: 0; color: var(--ink); font: 400 17px/1.6 var(--body);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 12px; }
+.skip:focus { left: 8px; }
+
+.top { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
+  max-width: 1160px; margin: 0 auto; padding: 24px; }
+.logo { font: 700 20px/1 var(--display); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.logo-mark { background: var(--ink); color: var(--marker); padding: 6px 8px; border-radius: 6px; font-size: 16px; }
+.top nav { display: flex; gap: 20px; flex-wrap: wrap; font-weight: 500; align-items: center; }
+.top nav a { text-decoration: none; padding: 4px 0; border-bottom: 2px solid transparent; }
+.top nav a:hover { border-color: var(--ink); }
+.top nav .nav-tg { background: var(--marker); padding: 4px 10px; border-radius: 4px; border-bottom: 0; }
+
+main > section { max-width: 1160px; margin: 0 auto; padding: 72px 24px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; margin: 0 0 16px; letter-spacing: -0.01em; }
+h1 { font-size: clamp(36px, 5.6vw, 66px); font-weight: 800; max-width: 12ch; }
+h2 { font-size: clamp(26px, 3.4vw, 40px); font-weight: 700; max-width: 22ch; }
+h3 { font-size: 20px; font-weight: 700; }
+p { max-width: 64ch; }
+.lead { font-size: 20px; color: var(--ink-soft); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn { display: inline-block; font: 600 16px/1 var(--body); padding: 16px 22px; border-radius: 10px;
+  text-decoration: none; border: 2px solid var(--ink); }
+.btn-ink { background: var(--ink); color: #fff; }
+.btn-ink:hover { background: #2B3F6B; }
+.btn-line { background: var(--paper); }
+.btn-line:hover { background: #fff; }
+.btn-marker { background: var(--marker); }
+.btn-marker:hover { background: #FFDD2E; }
+
+/* первый экран: лист с разбором промпта */
+main > .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; padding-top: 40px; }
+.sheet { margin: 0; background: #fff; border: 2px solid var(--ink); border-radius: 14px;
+  box-shadow: 8px 8px 0 var(--ink); transform: rotate(0.6deg); }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 14px 18px; border-bottom: 2px dashed var(--grid); font-weight: 600; }
+.toggle { display: inline-flex; border: 2px solid var(--ink); border-radius: 8px; overflow: hidden; }
+.toggle button { font: 600 15px var(--body); border: 0; background: #fff; color: var(--ink); padding: 8px 16px; cursor: pointer; }
+.toggle button[aria-selected="true"] { background: var(--ink); color: #fff; }
+.sheet-body { padding: 22px 22px 26px; }
+.sheet-body[hidden] { display: none; }
+.prompt { font: 400 16px/1.9 var(--mono); margin: 0 0 16px; }
+.prompt-bad { font-size: 20px; text-decoration: line-through; text-decoration-color: var(--redpen);
+  text-decoration-thickness: 3px; color: var(--ink-soft); }
+.redpen { list-style: none; padding: 0; margin: 0; color: var(--redpen); font-weight: 500; }
+.redpen li { padding-left: 26px; position: relative; margin: 6px 0; }
+.redpen li::before { content: "✕"; position: absolute; left: 0; font-weight: 700; }
+mark { background-image: linear-gradient(transparent 12%, var(--marker) 12%, var(--marker) 88%, transparent 88%);
+  background-color: transparent; background-repeat: no-repeat; background-size: 100% 100%;
+  color: inherit; padding: 0 2px; }
+mark::after { content: attr(data-tag); font: 600 11px var(--body); color: var(--ink-soft); background: #fff;
+  border: 1px solid var(--grid); border-radius: 4px; padding: 0 5px; margin-left: 6px; vertical-align: 2px; }
+.sheet-body.reveal mark { animation: draw 0.5s ease-out backwards; }
+.sheet-body.reveal mark:nth-of-type(2) { animation-delay: 0.15s; }
+.sheet-body.reveal mark:nth-of-type(3) { animation-delay: 0.3s; }
+.sheet-body.reveal mark:nth-of-type(4) { animation-delay: 0.45s; }
+@keyframes draw { from { background-size: 0% 100%; } to { background-size: 100% 100%; } }
+.sheet-note { font-size: 15px; color: var(--ink-soft); border-top: 2px dashed var(--grid); padding-top: 14px; margin: 0; }
+
+/* курсы: строки программы на одном листе */
+.section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 32px; }
+.section-head h2 { margin: 0; }
+.section-head p { color: var(--ink-soft); margin: 0; }
+.course-list { list-style: none; margin: 0; padding: 0; background: #fff; border: 2px solid var(--ink); border-radius: 14px; }
+.course { display: grid; grid-template-columns: 1.4fr 1.6fr auto; gap: 28px; align-items: center; padding: 26px 28px; }
+.course + .course { border-top: 2px dashed var(--grid); }
+.course h3 { margin-bottom: 6px; }
+.course .meta, .course .res { margin: 0; color: var(--ink-soft); font-size: 15px; }
+.course .who { margin: 0 0 6px; }
+.course .buy { text-align: right; min-width: 200px; }
+.price { font: 700 24px var(--display); display: block; margin-bottom: 8px; }
+.price small { display: block; font: 500 13px var(--body); color: var(--ink-soft); }
+.course .btn { padding: 12px 16px; font-size: 15px; }
+
+/* лайфхаки */
+.hack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); column-gap: 32px;
+  border-top: 2px solid var(--ink); }
+.hack { padding: 24px 0; border-bottom: 2px dashed var(--grid); }
+.hack h3 { font-size: 18px; margin-bottom: 6px; }
+.hack p { margin: 0 0 12px; color: var(--ink-soft); font-size: 15px; }
+.hack pre { margin: 0; white-space: pre-wrap; font: 400 14px/1.6 var(--mono); background: #fff;
+  border: 2px solid var(--ink); border-radius: 10px; padding: 12px 14px; }
+.copy { margin-top: 8px; font: 600 14px var(--body); background: none; border: 0; padding: 4px 0;
+  color: var(--ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.copy[data-done] { text-decoration: none; background: var(--marker); padding: 4px 8px; border-radius: 4px; }
+
+/* как устроен урок */
+main > .how { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px 56px; }
+.how h2 { grid-column: 1 / -1; }
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: s; }
+.steps li { counter-increment: s; position: relative; padding: 0 0 22px 64px; }
+.steps li::before { content: counter(s); position: absolute; left: 0; top: -4px; width: 44px; height: 44px;
+  display: grid; place-items: center; font: 800 20px var(--display); background: var(--marker);
+  border: 2px solid var(--ink); border-radius: 50%; }
+.promises { background: #fff; border: 2px solid var(--ink); border-radius: 14px; padding: 22px 24px; align-self: start; }
+.promises ul { margin: 0; padding-left: 20px; }
+.promises li { margin: 6px 0; }
+
+.faq details { border-bottom: 2px dashed var(--grid); padding: 16px 0; max-width: 800px; }
+.faq summary { cursor: pointer; font-weight: 600; font-size: 18px; }
+.faq details p { color: var(--ink-soft); margin: 10px 0 0; }
+
+main > .final { text-align: center; }
+.final h2, .final p { margin-left: auto; margin-right: auto; }
+.final p { color: var(--ink-soft); }
+.final .btn { margin-top: 12px; }
+
+.foot { max-width: 1160px; margin: 0 auto; padding: 32px 24px 48px; border-top: 2px solid var(--ink); }
+.foot-links { display: flex; flex-wrap: wrap; gap: 24px; font-weight: 500; }
+.small { font-size: 13px; color: var(--ink-soft); }
+
+@media (max-width: 900px) {
+  main > .hero, main > .how, .section-head { grid-template-columns: 1fr; gap: 32px; }
+  .sheet { transform: none; box-shadow: 5px 5px 0 var(--ink); }
+  .course { grid-template-columns: 1fr; gap: 12px; }
+  .course .buy { text-align: left; }
+  main > section { padding: 48px 20px; }
+}

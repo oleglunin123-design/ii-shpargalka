@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ИИ-шпаргалка — понятные курсы по нейросетям</title>
+<meta name="description" content="Короткие и понятные курсы по нейросетям: промпты, работа, картинки, автоматизация. Бесплатные шпаргалки в Telegram.">
+<meta property="og:title" content="ИИ-шпаргалка — нейросети, понятные с первого урока">
+<meta property="og:description" content="Короткие уроки по 10–15 минут, готовые промпты и честные инструкции.">
+<meta property="og:image" content="og.png">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#courses">Перейти к курсам</a>
+
+<header class="top">
+  <a class="logo" href="#" aria-label="ИИ-шпаргалка, на главную"><span class="logo-mark">ИИ</span>шпаргалка</a>
+  <nav aria-label="Разделы">
+    <a href="#courses">Курсы</a>
+    <a href="#hacks">Лайфхаки</a>
+    <a href="#how">Как учимся</a>
+    <a class="nav-tg" href="https://t.me/ii_shpargalka">Telegram-канал</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-text">
+    <h1>Нейросети, понятные с&nbsp;первого урока</h1>
+    <p class="lead">Короткие уроки по 10–15 минут. Каждый заканчивается готовым промптом, который ты сразу применишь в своей задаче.</p>
+    <div class="actions">
+      <a class="btn btn-ink" href="#courses">Смотреть курсы</a>
+      <a class="btn btn-line" href="https://t.me/ii_shpargalka_bot?start=site_hero">Забрать бесплатную шпаргалку</a>
+    </div>
+  </div>
+
+  <figure class="sheet" aria-labelledby="sheet-cap">
+    <figcaption id="sheet-cap" class="sheet-head">
+      <span>Разбор запроса</span>
+      <div class="toggle" role="tablist" aria-label="Версия запроса">
+        <button role="tab" aria-selected="true" aria-controls="v-before" id="t-before" data-v="before">Было</button>
+        <button role="tab" aria-selected="false" aria-controls="v-after" id="t-after" data-v="after">Стало</button>
+      </div>
+    </figcaption>
+    <div class="sheet-body" id="v-before" role="tabpanel" aria-labelledby="t-before">
+      <p class="prompt prompt-bad">Напиши пост про нейросети</p>
+      <ul class="redpen">
+        <li>не ясно, для кого текст</li>
+        <li>нет цели и длины</li>
+        <li>ответ будет общим и «водянистым»</li>
+      </ul>
+    </div>
+    <div class="sheet-body" id="v-after" role="tabpanel" aria-labelledby="t-after" hidden>
+      <p class="prompt"><mark data-tag="роль">Ты — автор Telegram-канала о практичных нейросетях.</mark>
+      <mark data-tag="задача">Напиши пост о том, как сократить длинное письмо с помощью ИИ,</mark>
+      <mark data-tag="аудитория">для новичков без опыта.</mark>
+      <mark data-tag="формат">600 знаков, 3 шага списком, в конце — пример запроса.</mark></p>
+      <p class="sheet-note">Роль, задача, аудитория, формат — четыре части, после которых ответ становится конкретным. Этому учит первый урок курса «Промпты, которые работают».</p>
+    </div>
+  </figure>
+</section>
+
+<section class="courses" id="courses" aria-labelledby="courses-h">
+  <div class="section-head">
+    <h2 id="courses-h">Курсы</h2>
+    <p>Идёт предзапись: курсы стартуют, когда наберётся группа. Записаться бесплатно — придёт сообщение в Telegram, когда откроем доступ. Цены ориентировочные и могут измениться к старту.</p>
+  </div>
+  <ol class="course-list">
+    <li class="course">
+      <div><h3>Нейросети с нуля за 7 дней</h3><p class="meta">7 уроков, 10 минут в день</p><p class="meta">Инструменты: ChatGPT, GigaChat, YandexGPT</p></div>
+      <div><p class="who">Никогда толком не пользовался ИИ и хочешь разобраться без терминов</p><p class="res">Каждый день решаешь одну реальную задачу: письмо, план, конспект, картинка</p></div>
+      <div class="buy"><span class="price">490 ₽<small>ориентировочная цена на старте</small></span>
+        <a class="btn btn-ink" href="https://t.me/ii_shpargalka_bot?start=course_start7">Записаться в лист ожидания</a></div>
+    </li>
+    <li class="course">
+      <div><h3>Промпты, которые работают</h3><p class="meta">8 уроков, по 12 минут</p><p class="meta">Инструменты: любой текстовый ассистент</p></div>
+      <div><p class="who">Пользуешься нейросетями, но ответы получаются общими</p><p class="res">Формула запроса и 50 шаблонов под работу, учёбу и быт</p></div>
+      <div class="buy"><span class="price">590 ₽<small>ориентировочная цена на старте</small></span>
+        <a class="btn btn-ink" href="https://t.me/ii_shpargalka_bot?start=course_prompts">Записаться в лист ожидания</a></div>
+    </li>
+    <li class="course">
+      <div><h3>ИИ для работы: письма, таблицы, презентации</h3><p class="meta">10 уроков, по 15 минут</p><p class="meta">Инструменты: ChatGPT, Claude, Gamma</p></div>
+      <div><p class="who">Офисная работа, много текста и рутины</p><p class="res">Пишешь письма, разбираешь таблицы и собираешь презентации в 2–3 раза быстрее (зависит от задач)</p></div>
+      <div class="buy"><span class="price">790 ₽<small>ориентировочная цена на старте</small></span>
+        <a class="btn btn-ink" href="https://t.me/ii_shpargalka_bot?start=course_work">Записаться в лист ожидания</a></div>
+    </li>
+    <li class="course">
+      <div><h3>Картинки и видео нейросетями</h3><p class="meta">8 уроков, по 15 минут</p><p class="meta">Инструменты: Midjourney, Kandinsky, CapCut</p></div>
+      <div><p class="who">Нужны обложки, иллюстрации и короткие ролики без дизайнера</p><p class="res">Свой стиль картинок, обложки для соцсетей, монтаж с субтитрами</p></div>
+      <div class="buy"><span class="price">790 ₽<small>ориентировочная цена на старте</small></span>
+        <a class="btn btn-ink" href="https://t.me/ii_shpargalka_bot?start=course_visual">Записаться в лист ожидания</a></div>
+    </li>
+    <li class="course">
+      <div><h3>Автоматизация рутины без программирования</h3><p class="meta">9 уроков, по 15 минут</p><p class="meta">Инструменты: n8n, Make</p></div>
+      <div><p class="who">Повторяешь одни и те же действия каждый день</p><p class="res">3 готовых сценария автоматизации, которые работают без тебя</p></div>
+      <div class="buy"><span class="price">990 ₽<small>ориентировочная цена на старте</small></span>
+        <a class="btn btn-ink" href="https://t.me/ii_shpargalka_bot?start=course_automation">Записаться в лист ожидания</a></div>
+    </li>
+  </ol>
+</section>
+
+<section class="hacks" id="hacks" aria-labelledby="hacks-h">
+  <div class="section-head">
+    <h2 id="hacks-h">Шесть приёмов, которые работают в любой нейросети</h2>
+    <p>Скопируй запрос, подставь своё вместо квадратных скобок.</p>
+  </div>
+  <div class="hack-grid">
+    <article class="hack">
+      <h3>Попроси уточняющие вопросы</h3>
+      <p>Нейросеть не знает твою ситуацию — пусть сама спросит, чего не хватает.</p>
+      <pre>Прежде чем отвечать, задай мне 3 уточняющих вопроса о задаче: [задача]</pre>
+      <button class="copy" type="button">Скопировать запрос</button>
+    </article>
+    <article class="hack">
+      <h3>Укажи формат ответа</h3>
+      <p>Таблица или список по шагам полезнее, чем сплошной текст.</p>
+      <pre>Сравни [А] и [Б] по цене, срокам и рискам. Ответ — таблицей, вывод в одну строку.</pre>
+      <button class="copy" type="button">Скопировать запрос</button>
+    </article>
+    <article class="hack">
+      <h3>Проверяй уверенность</h3>
+      <p>Модели ошибаются уверенно. Пусть сами отметят слабые места.</p>
+      <pre>Дай ответ, затем отдельно перечисли, в чём ты не уверен и что стоит проверить по источникам.</pre>
+      <button class="copy" type="button">Скопировать запрос</button>
+    </article>
+    <article class="hack">
+      <h3>Объясни простыми словами</h3>
+      <p>Сложную тему проще понять в два захода: просто, потом глубже.</p>
+      <pre>Объясни [тема] так, будто мне 12 лет. Потом — уровнем студента.</pre>
+      <button class="copy" type="button">Скопировать запрос</button>
+    </article>
+    <article class="hack">
+      <h3>Сокращай без потери смысла</h3>
+      <p>Ограничение длины заставляет оставить главное.</p>
+      <pre>Сократи текст до 5 предложений. Сохрани все цифры и имена: [текст]</pre>
+      <button class="copy" type="button">Скопировать запрос</button>
+    </article>
+    <article class="hack">
+      <h3>Дай роль</h3>
+      <p>Роль задаёт тон и глубину ответа.</p>
+      <pre>Ты — опытный редактор. Найди в тексте канцелярит и предложи живые замены: [текст]</pre>
+      <button class="copy" type="button">Скопировать запрос</button>
+    </article>
+  </div>
+</section>
+
+<section class="how" id="how" aria-labelledby="how-h">
+  <h2 id="how-h">Как устроен урок</h2>
+  <ol class="steps">
+    <li><strong>Короткое объяснение.</strong> 5–7 минут видео или текста — без терминов и «воды».</li>
+    <li><strong>Готовый запрос.</strong> Копируешь шаблон и подставляешь свою задачу.</li>
+    <li><strong>Проверка результата.</strong> Чек-лист: как понять, что ответ нейросети хороший и где он может ошибаться.</li>
+  </ol>
+  <div class="promises">
+    <h3>Чего здесь не будет</h3>
+    <ul>
+      <li>Обещаний «заработать миллион на нейросетях».</li>
+      <li>Устаревших инструкций: материалы обновляются, когда меняются сервисы.</li>
+      <li>Лишней теории — только то, что нужно для результата.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="faq-h">
+  <h2 id="faq-h">Вопросы</h2>
+  <details><summary>Нужно ли платить за нейросети?</summary><p>Для большинства уроков хватает бесплатных версий сервисов. Если где-то нужна платная функция, это указано заранее.</p></details>
+  <details><summary>Я совсем новичок. Пойму?</summary><p>Да. Курс «Нейросети с нуля за 7 дней» рассчитан на тех, кто ни разу не пользовался ИИ.</p></details>
+  <details><summary>Как проходит обучение?</summary><p>Уроки приходят в Telegram: коротко, по шагам, в удобное время. Можно возвращаться к ним в любой момент.</p></details>
+  <details><summary>Когда старт и как оплатить?</summary><p>Сейчас идёт предзапись, оплата не принимается. Запишись — пришлём сообщение в Telegram, когда откроем курс.</p></details>
+</section>
+
+<section class="final" aria-labelledby="final-h">
+  <h2 id="final-h">Начни с бесплатной шпаргалки</h2>
+  <p>25 полезных AI-инструментов, 30 готовых промптов и справочник «какая нейросеть для какой задачи».</p>
+  <a class="btn btn-marker" href="https://t.me/ii_shpargalka_bot?start=site_final">Получить в Telegram</a>
+</section>
+</main>
+
+<footer class="foot">
+  <p class="foot-links"><span>ИИ-шпаргалка</span><a href="https://t.me/ii_shpargalka">Telegram-канал</a><a href="https://t.me/ii_shpargalka_bot">Бот с материалами</a></p>
+  <p class="small">Информация на сайте не является публичной офертой. Оплата пока не принимается.</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
